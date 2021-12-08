@@ -17,9 +17,25 @@ const PORT = process.env.PORT
 app.get('/test', handleGetTest)
 
 
-app.get('/weather', (req,res) => {
-  res.status(200).send(weatherData);
-});
+app.get('/weather', (req, res) => {
+
+  let forecastArray = [];
+  let cityName = req.query.searchQuery;
+  let lat = req.query.lat;
+  let lon = req.query.lon;
+
+  try {
+    weatherData.find(obj => {
+      if (obj.city_name === cityName) {
+        forecastArr.push(new Forecast(obj.data));
+      }
+    });
+    res.send(forecastArray);
+  } catch (error){
+    res.send('Cannot find city')
+  };
+
+  });
 
 
 app.get('/*', (req, res) => {
@@ -28,7 +44,7 @@ app.get('/*', (req, res) => {
 
 
 
-function handleGetTest( request, response){
+function handleGetTest(request, response) {
   response.send('your test worked');
 }
 
@@ -42,9 +58,10 @@ console.log(threeDayArr);
 console.log(threeDayDescripArr);
 
 class Forecast {
-  constructor(weatherData){
-    
-    
+  constructor(weatherData) {
+
+    this.threeDayArr = weatherData.map(weatherData => weatherData.data.map(data => data.datetime));
+    this.threeDayDescripArr = weatherData.map(weatherData => weatherData.data.map(data => data.weather.description));
   }
 }
 
