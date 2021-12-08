@@ -27,12 +27,24 @@ app.get('/*', (req, res) => {
 });
 
 
-// function handleGetWeather(req,res){
-//   res.status(200).send(weatherData);
-// }
 
 function handleGetTest( request, response){
   response.send('your test worked');
 }
 
 app.listen(PORT, () => console.log("server is listening on port", PORT));
+
+// weatherData, weatherData[0] weatherData[1] weatherData[2], data, weather, description 
+let threeDayArr = weatherData.map(weatherData => weatherData.data.map(data => data.datetime));
+let threeDayDescripArr = weatherData.map(weatherData => weatherData.data.map(data => data.weather.description));
+
+console.log(threeDayArr);
+console.log(threeDayDescripArr);
+
+class Forecast {
+  constructor(weatherData){
+    
+    
+  }
+}
+
