@@ -14,6 +14,9 @@
 ### Lab7 Wire Frame7
 ![Lab 7 Wireframe](lab7-wireframe.PNG)
 
+### Lab 8 WireFrame
+![Lab 8  Wireframe](Lab8-wireframe.PNG)
+
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
@@ -45,3 +48,4 @@ Actual time needed to complete: 1.25 hours
 
 - Lab6 WireFrame exercise with Rey Mercado
 - Lab7 WireFrame with Daniel Jackson
+- Lab8 WireFrame with Chris Harden
