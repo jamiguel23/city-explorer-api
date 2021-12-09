@@ -22,6 +22,20 @@
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
+## time estimate
+Name of feature: creating class forecast
+Estimate of time needed to complete: 30 minutes
+
+
+Actual time needed to complete: 2 hours
+
+Name of feature: .find method to search json file
+Estimate of time needed to complete: 3 hours
+
+
+Actual time needed to complete: 12 hours
+
 ## Credit and Collaborations
 
 - Lab6 WireFrame exercise with Rey Mercado
+- Lab7 WireFrame with Daniel Jackson
