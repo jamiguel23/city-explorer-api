@@ -4,64 +4,46 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const weatherData = require('./data/weather.json');
+
 const { response } = require('express');
-
-
 const app = express()
-
-app.use(cors());
-
 const PORT = process.env.PORT
 
-
+app.use(cors());
 app.get('/test', handleGetTest)
-
-
-app.get('/weather', (req, res) => {
-
-  let forecastArray = [];
-  let cityName = req.query.searchQuery;
-  let lat = req.query.lat;
-  let lon = req.query.lon;
-
-  try {
-    weatherData.find(obj => {
-      if (obj.city_name === cityName) {
-        forecastArr.push(new Forecast(obj.data));
-      }
-    });
-    res.send(forecastArray);
-  } catch (error){
-    res.send('Cannot find city')
-  };
-
-  });
-
+app.get('/weather', handleGetWeather);
 
 app.get('/*', (req, res) => {
   res.status(404).send('something went wrong');
 });
 
-
-
-function handleGetTest(request, response) {
-  response.send('your test worked');
-}
-
-app.listen(PORT, () => console.log("server is listening on port", PORT));
-
-// weatherData, weatherData[0] weatherData[1] weatherData[2], data, weather, description 
-let threeDayArr = weatherData.map(weatherData => weatherData.data.map(data => data.datetime));
-let threeDayDescripArr = weatherData.map(weatherData => weatherData.data.map(data => data.weather.description));
-
-console.log(threeDayArr);
-console.log(threeDayDescripArr);
-
-class Forecast {
-  constructor(weatherData) {
-
-    this.threeDayArr = weatherData.map(weatherData => weatherData.data.map(data => data.datetime));
-    this.threeDayDescripArr = weatherData.map(weatherData => weatherData.data.map(data => data.weather.description));
+function handleGetWeather(req, res) {
+  // console.log('it did something. yay')
+  // res.send('hit weather route')
+  
+  let city_name = req.query.city_name;
+  console.log(city_name);
+  let cityMatch = weatherData.find(city => city.city_name.toLowerCase() === city_name.toLowerCase());
+  if (cityMatch) {
+    let weatherDescriptions = cityMatch.data.map(day => new Forecast(day));
+    console.log(weatherDescriptions);
+    res.status(200).send(weatherDescriptions);
+  } else {
+    res.status(400).send('sorry no data');
   }
 }
 
+function handleGetTest(request, response) {
+  response.send('your test is working');
+}
+
+
+class Forecast {
+  constructor(obj) {
+    
+    this.date = obj.datetime;
+    this.description = obj.weather.description;
+  }  
+}
+
+app.listen(PORT, () => console.log(`server is listening on port, ${PORT}`));
