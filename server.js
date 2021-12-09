@@ -28,32 +28,32 @@ function handleGetWeather(req, res) {
       console.log(weatherDescriptions);
       res.status(200).send(weatherDescriptions);
     })
-    .catch (error => {
+    .catch(error => {
       console.error(error.message);
       res.status(500).send('server error')
     });
 
 }
 
-function handleGetMovie(req, res){
+function handleGetMovie(req, res) {
   const url = `https://api.themoviedb.org/3/keyword/{seattle}/movies?api_key=${process.env.MOVIE_API_KEY}&language=en-US&include_adult=false`
   console.log(req.query);
 
 }
 
 
-  
+
 function handleGetTest(request, response) {
-response.send('your test is working');
+  response.send('your test is working');
 }
 
+    
+class Forecast {
+  constructor(obj) {
 
-  class Forecast {
-    constructor(obj) {
-
-      this.date = obj.datetime;
-      this.description = obj.weather.description;
-    }
+    this.date = obj.datetime;
+    this.description = obj.weather.description;
   }
+}
 
-  app.listen(PORT, () => console.log(`server is listening on port, ${PORT}`));
+app.listen(PORT, () => console.log(`server is listening on port, ${PORT}`));
