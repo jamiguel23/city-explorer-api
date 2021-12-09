@@ -35,6 +35,12 @@ Estimate of time needed to complete: 3 hours
 
 Actual time needed to complete: 12 hours
 
+Name of feature: pulling lat and long from weather API
+Estimate of time needed to complete: 3hours
+
+
+Actual time needed to complete: 1.25 hours
+
 ## Credit and Collaborations
 
 - Lab6 WireFrame exercise with Rey Mercado
