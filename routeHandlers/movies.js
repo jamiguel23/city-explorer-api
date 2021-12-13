@@ -8,13 +8,24 @@ const cache = {}
 
 async function handleGetMovie(req, res) {
 
+  const {city_name} = req.query;
 
-  
+  if (cache[city_name] && (cache[city_name].timestamp > (Date.now() - 1440000))) {
+    res.status(200).send(cache[city_name]);
+    console.log('Cache hit', cache[city_name]);
+    return;
+  }
+
+  console.log('Cache miss');
+  cache[city_name] = {};
+  cache[city_name].timestamp = Date.now();
+
   try {
     const city_name = req.query.city_name
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&query=${city_name}&page=1&include_adult=false`
     const movieRes = await axios.get(url);
     const cleanedMovies = movieRes.data.results.map(movie => new Movies(movie));
+    cache[city_name].data = cleanedMovies;
     console.log(req.query);
     res.status(200).send(cleanedMovies)
 
