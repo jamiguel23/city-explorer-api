@@ -17,7 +17,7 @@
 ### Lab 8 WireFrame
 ![Lab 8  Wireframe](Lab8-wireframe.PNG)
 
-### ![Lab 9 WireFrame](lab10-wireframe.PNG)
+### ![Lab 10 WireFrame](lab10-wireframe.PNG)
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
@@ -51,6 +51,12 @@ Estimate of time needed to complete: 3hours
 
 
 Actual time needed to complete: 6 hours/ with breaks
+
+Name of feature: Cache
+Estimate of time needed to complete: 2hours
+
+
+Actual time needed to complete: 1 hour
 
 ## Credit and Collaborations
 
